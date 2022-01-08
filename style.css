@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+.hour-left{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.clock-nums{
+	display: block;
+	font-family: 'Alfa Slab One', cursive;
+	font-size: 90px;
+	transition: all .5s;
+}
+.hour{
+    display: flex;
+    align-items: baseline;
+    overflow-y: hidden;
+    height: 126px;
+    width: 150px;
+    justify-content: center;
+    padding: 7px;
+    text-align: center;
+}
+.dots{
+	transform: translateY(-5px);
+}
+.clock{
+	display: flex;
+}
+.minutes{
+	display: flex;
+    align-items: baseline;
+    overflow-y: hidden;
+    height: 126px;
+    width: 150px;
+    justify-content: center;
+    padding: 7px;
+    text-align: center;
+}
+.seconds{
+	display: flex;
+    align-items: baseline;
+    overflow-y: hidden;
+    height: 126px;
+    width: 150px;
+    justify-content: center;
+    padding: 7px;
+    text-align: center;
+}
