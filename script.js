@@ -140,3 +140,17 @@ secondsInterval=()=>{
 
 	},1000)
 }
+
+$('#alarm').click(()=>{
+	$('#alarm-block').css('transform','translateX(0px)')
+})
+$('#close-alarm').click(()=>{
+	$('#alarm-block').css('transform','translateX(-683px)')
+})
+
+$('#earth').click(()=>{
+$('#earth-block').css('transform','translateX(0px)')
+})
+$('#close-earth').click(()=>{
+	$('#earth-block').css('transform','translateX(683px)')
+})
