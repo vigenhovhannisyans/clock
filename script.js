@@ -11,12 +11,24 @@ let minutesLeft=0
 
 let hour = 0
 let hourLeft = 0
-$(document).ready(()=>{
-secondsInterval()
-})
+
+
 let date = new Date()
 let splitDate = String(date).split(' ')[4].split(':').join('').split('')
+let year = date.toISOString().split('T')[0]
+let splYear = year.split('-').join('/')
+let month = date.toLocaleString('default', { month: 'long'});
+let weekday = date.toLocaleString('default', { weekday:'long'});
 
+$('#week-month').text(month+'/'+weekday)
+$('#year').text(splYear)
+second=splitDate[5]
+secondLeft=splitDate[4]
+$('#sl-0').text(secondLeft)
+$('#sr-0').text(second)
+
+$('#week-month').text(month+'/'+weekday)
+$('#year').text(splYear)
 second=splitDate[5]
 secondLeft=splitDate[4]
 $('#sl-0').text(secondLeft)
@@ -33,6 +45,28 @@ hour=splitDate[1]
 hourLeft=splitDate[0]
 $('#hr-0').text(hour)
 $('#hl-0').text(hourLeft)
+
+let temp = ''
+let maxTemp = ''
+let minTemp = ''
+let humidity = 0
+$(document).ready(()=>{
+secondsInterval()
+})
+
+fetch('https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139')
+  .then(response => response.json())
+  .then(json =>{
+  	temp=String(json.main.temp).split('.')[0]
+  	maxTemp=String(json.main.temp_max).split('.')[0]
+  	minTemp=String(json.main.temp_min).split('.')[0]
+  	humidity=String(json.main.humidity).split('.')[0]
+  	$('#max-temp').text(maxTemp)
+  	$('#main-temp').text(temp)
+  	$('#min-temp').text(minTemp)
+  }
+  	)
+  
 
 
 secondsInterval=()=>{

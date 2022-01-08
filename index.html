@@ -7,7 +7,28 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<div class="clock-block">
 	<div class="clock">
+		<span><img class="earth" src="earth.ico" alt=""></span>
+		<span id="alarm"><img class="add-alarm" src="alarm.ico" alt=""></span>
+		<div class="degree">
+			<span id="main-temp" class="temp">0</span>
+			<span class="cels">o</span>
+
+			<div class="max-min">
+			<span id="max-temp" class="temp min-max-temp">0
+			</span>
+			<span id="min-temp" class="temp min-max-temp">0
+			</span>
+			<span class="cels-1">o</span>
+			<span class="cels-2">o</span>
+			<hr class="under-min-max">
+			</div>
+
+
+		</div>
+		<span id="week-month" class="week-month"></span>
+		<span id="year" class="year"></span>
 		<div class="hour">
           <div class="hour-left">
           <span id="hl-0" class="hour-nums clock-nums zero">0</span>
@@ -42,6 +63,7 @@
           </div>
 
 		</div>
+	</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="script.js"></script>
