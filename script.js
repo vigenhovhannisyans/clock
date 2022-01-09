@@ -12,27 +12,28 @@ let minutesLeft=0
 let hour = 0
 let hourLeft = 0
 
+let alarmLeftH = 0;
+let alarmRightH = 0;
 
+let alarmLeftM = 0;
+let alarmRightM = 0;
+let alarmResult = ''
+$(document).ready(()=>{
 let date = new Date()
 let splitDate = String(date).split(' ')[4].split(':').join('').split('')
 let year = date.toISOString().split('T')[0]
-let splYear = year.split('-').join('/')
+let splYear = year.split('-')
+let currentDate=splYear[1]+'/'+splYear[2]+'/'+splYear[0]
 let month = date.toLocaleString('default', { month: 'long'});
 let weekday = date.toLocaleString('default', { weekday:'long'});
 
 $('#week-month').text(month+'/'+weekday)
-$('#year').text(splYear)
+$('#year').text(currentDate)
 second=splitDate[5]
 secondLeft=splitDate[4]
 $('#sl-0').text(secondLeft)
 $('#sr-0').text(second)
 
-$('#week-month').text(month+'/'+weekday)
-$('#year').text(splYear)
-second=splitDate[5]
-secondLeft=splitDate[4]
-$('#sl-0').text(secondLeft)
-$('#sr-0').text(second)
 
 secondCount=splitDate[4]+''+splitDate[5]
 
@@ -50,7 +51,11 @@ let temp = ''
 let maxTemp = ''
 let minTemp = ''
 let humidity = 0
+$('#alarm-sound').hide()
+let currentTime = ''
+})
 $(document).ready(()=>{
+	currentTime=$('#hl-0').text()+''+$('#hr-0').text()+':'+$('#ml-0').text()+''+$('#mr-0').text()
 secondsInterval()
 })
 
@@ -139,7 +144,6 @@ secondsInterval=()=>{
 			++hourLeft
 			$('#hr-0').text(hour)
 			$('#hl-0').text(hourLeft)
-			alert()
 		}
 		if(hourLeft===1 && hour===2){
 			 second = 0;
@@ -162,8 +166,15 @@ secondsInterval=()=>{
 			$('#hr-0').text(hour)
 			$('#hl-0').text(hourLeft)
 		}
-
-
+		let hourRes =$('#hl-0').text()+''+$('#hr-0').text()+''+$('#ml-0').text()+''+$('#mr-0').text()
+		if(hourRes===alarmResult){
+			$('#alarm-sound').show()
+			setTimeout(()=>{
+			$('#alarm-sound').hide()
+			},5000)
+			alarmResult=''
+			return
+		}
 	},1000)
 }
 
@@ -252,11 +263,19 @@ $('#apply-alarm').click(()=>{
 		$('#hour-right').val()+':'+
 		$('#hour-left-1').val()+''+
 		$('#hour-right-1').val())
+	alarmLeftH = Number($('#hour-left').val());
+	alarmRightH = Number($('#hour-right').val());
+
+	alarmLeftM = Number($('#hour-left-1').val());
+	alarmRightM = Number($('#hour-right-1').val());
+	alarmResult = alarmLeftH+''+alarmRightH+''+alarmLeftM+''+alarmRightM
+
 	$('#add-alarm-img').addClass('alarm-img-s')
 	if(!isAplly){
 		$('#apply-alarm').text('Clear')
 		isAplly=true;
 		$('#alarm-res').show()
+
 		return
 	}
 	if(isAplly){
@@ -267,6 +286,7 @@ $('#apply-alarm').click(()=>{
 		$('#hour-left-1').val('')
 		$('#hour-right-1').val('')
 		$('#alarm-res').hide()
+		$('#apply-alarm').addClass('opacity-alarm-btn')
 		$('#add-alarm-img').removeClass('alarm-img-s')
 		return
 	}
