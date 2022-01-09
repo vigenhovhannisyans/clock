@@ -12,13 +12,13 @@
 		<div id="alarm-block" class="alarm-block">
 			<span id="close-alarm" class="close-alarm">X</span>
 			<div class="input-alarm">
-				<span class="add-alarm-text">Add alarm</span>
-				<input class="alarm-input-s" type="text" id="hour-left">
-				<input class="alarm-input-s" type="text" id="hour-right">
+				<span class="add-alarm-text">Add an alarm</span>
+				<input  class="alarm-input-s" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" / type="text" pattern="[0-9]" maxlength="1" id="hour-left">
+				<input  class="alarm-input-s" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" / type="text" pattern="[0-9]" maxlength="1" id="hour-right">
 				<span class="dots">:</span>
-				<input class="alarm-input-s" type="text" id="hour-left">
-				<input class="alarm-input-s" type="text" id="hour-right">
-				<button class="apply-alarm"  id="apply-alarm">Apply</button>
+				<input  class="alarm-input-s" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" / type="text" pattern="[0-9]" maxlength="1" id="hour-left-1">
+				<input  class="alarm-input-s" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" / type="text" pattern="[0-9]" maxlength="1" id="hour-right-1">
+				<button class="apply-alarm opacity-alarm-btn"  id="apply-alarm"></button>
 			</div>
 		</div>
 
@@ -27,15 +27,17 @@
 			<div class="input-alarm">
 				<span class="add-alarm-text">Search a clock</span>
 				<div class="search-block">
-				<input type="text" class="input-clock">
-				<button>Search</button>
+				<img class="europe-img" src="europe.png" alt="">
+				<input id="input-clock" type="text" class="input-clock">
+				<button id="search-btn" class="search-btn">Search</button>
+				<p id="word-clock-p" class="word-clock close-block"><span id="search-region" class="search-region">French</span><span id="time-zone"></span></p>
 				</div>
 			</div>
 		</div>
 
 
 		<span><img id="earth" class="earth" src="earth.ico" alt=""></span>
-		<span id="alarm"><img class="add-alarm" src="alarm.ico" alt=""></span>
+		<p id="alarm"><img id="add-alarm-img" class="add-alarm" src="alarm.ico" alt=""> <span class="alarm-res" id="alarm-res"></span></p>
 		<div class="degree">
 			<span id="main-temp" class="temp">0</span>
 			<span class="cels">o</span>

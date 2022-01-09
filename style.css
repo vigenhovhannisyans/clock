@@ -196,6 +196,62 @@ background: radial-gradient(circle, rgba(49,68,85,1) 0%, rgba(0,0,0,1) 100%);
     transform: translateX(683px);
     transition: all .5s;
 }
+.input-clock{
+    width: 291px;
+    height: 35px;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid #efefef;
+    font-size: 22px;
+    padding-left: 47px;
+    color: gray;
+}
+.input-clock:focus-visible{
+    outline: none;
+}
+.search-btn{
+    width: 70px;
+    height: 40px;
+    border-radius: 0 8px 8px 0;
+    border: none;
+     transition: all .5s;
+}
+.europe-img{
+    width: 30px;
+    position: absolute;
+    left: 15px;
+}
+.search-block{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -90%);
+    width: max-content;
+}
+.word-clock{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-size: 40px;
+    left: 50%;
+    transform: translate(-51%, -27%);
+    font-family: 'Alfa Slab One', cursive;
+    white-space: nowrap;
+    transform: translate(-51%, 83%);
+    margin: 0;
+}
+.search-region{
+ margin-right: 15px;
+}
+.search-btn:hover{
+    cursor: pointer;
+    background-color: #2e4050;
+    color: white;
+}
+.close-block{
+    display: none;
+}
 .close-alarm{
     position: absolute;
     right: 0;
@@ -239,9 +295,15 @@ background: radial-gradient(circle, rgba(49,68,85,1) 0%, rgba(0,0,0,1) 100%);
     background: #304354;
     color: white;
     border: 0;
+    transition: all .5s;
+}
+.opacity-alarm-btn{
+    opacity: 0.6;
+    pointer-events: none;
 }
 .apply-alarm:hover{
     cursor: pointer;
+    background-color: #51616e;
 }
 .add-alarm-text{
     position: absolute;
@@ -252,4 +314,22 @@ background: radial-gradient(circle, rgba(49,68,85,1) 0%, rgba(0,0,0,1) 100%);
     font-family: 'Alfa Slab One', cursive;
     white-space: nowrap;
 }
+.alarm-res{
+    position: absolute;
+    color: white;
+    top: 0;
+    font-size: 17px;
+    transform: translate(-3px, 28px);
+}
+.alarm-res:hover{
+    cursor: pointer;
+}
+.alarm-img-s{
+    width: 15px;
+    transform: translate(25px, 30px);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }

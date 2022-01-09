@@ -68,6 +68,32 @@ fetch('https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139')
   	)
   
 
+$('#search-btn').click(()=>{
+	let searchVal = $('#input-clock').val()
+	let searchRes = ''
+fetch(`http://worldtimeapi.org/api/timezone/Europe/${searchVal}`)
+.then((response)=> new Promise((resolve,reject)=>{
+	resolve(response.json())
+
+})
+	 )
+.then(json=>{
+	searchRes=json.datetime.split('T')[1].split('.')[0].slice(0,5)
+	$('#time-zone').text(searchRes)
+	$('#search-region').text(searchVal)
+	$('#word-clock-p').removeClass('close-block')
+
+})
+.catch(error=>{
+		 
+	console.log(error.message)
+	$('#word-clock-p').removeClass('close-block')
+		$('#time-zone').text('')
+	$('#search-region').text('Something went wrong')
+})
+})
+
+
 
 secondsInterval=()=>{
 		let inter = setInterval(()=>{
@@ -147,10 +173,102 @@ $('#alarm').click(()=>{
 $('#close-alarm').click(()=>{
 	$('#alarm-block').css('transform','translateX(-683px)')
 })
-
+$('#alarm-res').click(()=>{
+		$('#alarm-block').css('transform','translateX(0px)')
+})
 $('#earth').click(()=>{
 $('#earth-block').css('transform','translateX(0px)')
 })
 $('#close-earth').click(()=>{
 	$('#earth-block').css('transform','translateX(683px)')
 })
+let hourLefts=0
+$('#hour-left').keyup((e)=>{
+							$('#apply-alarm').text('Apply')
+			isAplly=false;
+	hourLefts = Number(e.target.value)
+	if(hourLefts>2){
+		$('#hour-left').val(2)
+	}
+	if($('#hour-right').val().length===1 && $('#hour-left').val().length===1 && $('#hour-left-1').val().length===1 && $('#hour-right-1').val().length===1){
+		$('#apply-alarm').removeClass('opacity-alarm-btn')
+	}else{
+		$('#apply-alarm').addClass('opacity-alarm-btn')
+	}
+})
+$('#hour-left-1').keyup((e)=>{
+							$('#apply-alarm').text('Apply')
+			isAplly=false;
+	let inp = Number(e.target.value)
+		if(Number($('#hour-left').val())===2 && Number($('#hour-right').val())===4){
+				console.log('aaaaaaaaa')
+		$('#hour-left-1').val(0)
+	}
+		if(Number($('#hour-left').val())<=2 && Number($('#hour-right').val())<=3 && inp>5 ){
+				$('#hour-left-1').val(0)
+	}
+	if(inp>5){
+$('#hour-left-1').val(0)
+	}
+	if($('#hour-right').val().length===1 && $('#hour-left').val().length===1 && $('#hour-left-1').val().length===1 && $('#hour-right-1').val().length===1){
+		$('#apply-alarm').removeClass('opacity-alarm-btn')
+	}else{
+		$('#apply-alarm').addClass('opacity-alarm-btn')
+	}
+})
+let hourRight = 0
+$('#hour-right').keyup((e)=>{
+						$('#apply-alarm').text('Apply')
+			isAplly=false;
+	hourRight = Number(e.target.value)
+	if(Number($('#hour-left').val())===2&&hourRight>4){
+		$('#hour-right').val(4)
+	}
+	if($('#hour-right').val().length===1 && $('#hour-left').val().length===1 && $('#hour-left-1').val().length===1 && $('#hour-right-1').val().length===1){
+		$('#apply-alarm').removeClass('opacity-alarm-btn')
+	}else{
+		$('#apply-alarm').addClass('opacity-alarm-btn')
+	}
+})
+$('#hour-right-1').keyup((e)=>{
+							$('#apply-alarm').text('Apply')
+			isAplly=false;
+	let inp = Number(e.target.value)
+	if(Number($('#hour-left').val())===2 && Number($('#hour-right').val())===4){
+		$('#hour-right-1').val(0)
+	}
+	if($('#hour-right').val().length===1 && $('#hour-left').val().length===1 && $('#hour-left-1').val().length===1 && $('#hour-right-1').val().length===1){
+		$('#apply-alarm').removeClass('opacity-alarm-btn')
+	}else{
+		$('#apply-alarm').addClass('opacity-alarm-btn')
+	}
+})
+$('#apply-alarm').text('Apply')
+let isAplly = false
+$('#apply-alarm').click(()=>{
+
+	$('#alarm-res').text(
+		$('#hour-left').val()+''+
+		$('#hour-right').val()+':'+
+		$('#hour-left-1').val()+''+
+		$('#hour-right-1').val())
+	$('#add-alarm-img').addClass('alarm-img-s')
+	if(!isAplly){
+		$('#apply-alarm').text('Clear')
+		isAplly=true;
+		$('#alarm-res').show()
+		return
+	}
+	if(isAplly){
+			$('#apply-alarm').text('Apply')
+			isAplly=false;
+		$('#hour-left').val('')
+		$('#hour-right').val('')
+		$('#hour-left-1').val('')
+		$('#hour-right-1').val('')
+		$('#alarm-res').hide()
+		$('#add-alarm-img').removeClass('alarm-img-s')
+		return
+	}
+})
+
