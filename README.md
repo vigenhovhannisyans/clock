@@ -1,1 +1,1 @@
-# clock
+# here you can see the current time, week, month, year, you can also search by world clock, for this you have to click on the globe and write the name of the country's capital, you can also see the temperature here and add an alarm clock
